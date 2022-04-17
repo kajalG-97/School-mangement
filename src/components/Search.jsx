@@ -2,19 +2,13 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import { Link, useNavigate } from "react-router-dom";
-import SvgIcon from '@mui/material/SvgIcon';
-import { useSelector } from 'react-redux';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import InputBase from '@mui/material/InputBase';
-import Badge from '@mui/material/Badge';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
-
+import { useCallback, useState } from "react";
 import { styled, alpha } from '@mui/material/styles';
-
+import InputBase from '@mui/material/InputBase';
+import SearchIcon from '@mui/icons-material/Search';
+import { getClassList } from '../redux/classes/classAction'
+import { useDispatch } from 'react-redux';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -63,6 +57,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function SearchAppBar() {
 
+    const dispatch = useDispatch();
+
+    const navigate = useNavigate();
+
     const [suggestions, setSuggestions] = React.useState([]);
 
     const debounce = (func) => {
@@ -83,11 +81,12 @@ export default function SearchAppBar() {
             return;
         }
         fetch(
-            `https://grubhub-backend-clone.herokuapp.com/restaurant_name/search?search=${value}`
+            `https://school-info-backend-project.herokuapp.com/teacher_name/search?search=${value}`
         )
             .then((res) => res.json())
             .then((json) => setSuggestions(json));
-    };
+        };
+        console.log('setSuggestions',suggestions);
 
 
 
@@ -112,16 +111,20 @@ export default function SearchAppBar() {
             </Search>
             <Box>
 
-                {data.length > 0 && (
-                    <D className="autocomplete">
+                {suggestions.length > 0 && (
+                    <div className="autocomplete">
                         {suggestions.map((el, i) => (
-                            <div key={i} className="autocompleteItems">
-                                <Link to={`/restaurant/${el.restaurant_name}`}>
-                                    <P>{el.restaurant_name}</P>
-                                </Link>
+                            <div onClick={() => {
+                                dispatch(getClassList(el.classes_ids));
+                                navigate("/searched")
+
+                            }} key={i} className="autocompleteItems">
+                               
+                                    <p>{el.teacher_name}</p>
+                               
                             </div>
                         ))}
-                    </D>
+                    </div>
                 )}
             </Box>
 

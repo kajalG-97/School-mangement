@@ -12,6 +12,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { useNavigate, useParams } from 'react-router-dom';
+import {getClassList} from '../redux/classes/classAction'
 
 export const TeacherData = () => {
 
@@ -73,6 +74,7 @@ export const TeacherData = () => {
                                     // (`/teacher/${e.teacher_name}`)
                                     console.log('e', e);
                                     dispatch(getClassList(e.classes_ids));
+                                    navigate("/searched")
                                 
                                 }} color="secondary">{e.teacher_name}</Button>
                             </StyledTableCell>

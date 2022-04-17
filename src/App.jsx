@@ -5,7 +5,7 @@ import { NotFound } from './components/NotFound'
 import { SignIn } from './components/SignIn'
 import { HomeNav } from './components/HomeNav'
 import { MainHome } from './components/mainHome'
-import {searchTeacherInfo} from './components/searchByTeacher'
+import {SearchTeacherInfo} from './components/searchByTeacher'
 
 function App() {
 
@@ -17,7 +17,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
         <Route path="/SignIn" element={<SignIn />} />
         <Route path="/mainHome" element={<MainHome />} />
-        <Route path="teacher/:teacher_name" element={<SearchTeacherInfo/>}/>
+        <Route path="/searched" element={<SearchTeacherInfo/>}/>
       </Routes>
     </div>
   )

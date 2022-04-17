@@ -15,6 +15,7 @@ import InputBase from '@mui/material/InputBase';
 import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+import { useCallback, useState } from "react";
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import SearchAppBar from './Search';
@@ -67,7 +68,7 @@ export const HomeNav = () => {
                         <Typography variant="h6" component="div" sx={{ mr: 2, flexGrow: 1, display: "flex", justifyContent: "space-between" }}>
                             SchoolInfo
                         </Typography>
-                        {/* <SearchAppBar/> */}
+                        <SearchAppBar/>
                         {/* <Link to={"/createTodo"}><Button sx={{ m: 1, color: "#f2f2ff", textDecoration: "none" }} color="inherit">Create Todo</Button></Link> */}
                             <Link underline="none" to={"/"}><Button onClick={() => dispatch(logoutUser())} sx={{ m: 1, color: "#f2f2ff" }} color="inherit">Logout</Button></Link>
 
