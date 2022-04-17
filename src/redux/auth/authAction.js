@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getSchoolData } from "../school/schoolAction";
 
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 
@@ -20,7 +21,11 @@ export const loginSuccessData = (data,toast ,navigate ) => (dispatch) => {
 
     // dispatch(loginLoding());
     axios.post("https://school-info-backend-project.herokuapp.com/login", data).then(({ data }) => {
-        dispatch(loginSuccess(data))
+        dispatch(loginSuccess(data));
+        
+        dispatch(getSchoolData(data.admin._id));
+        console.log('data', data);
+
         toast.success("Logged in Successfully", {
             position: "top-center",
         });

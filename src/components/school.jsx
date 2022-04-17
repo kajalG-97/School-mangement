@@ -20,9 +20,9 @@ export const SchoolData = () => {
     return (
         <div>
             {schoolList.map((e) => {
-               return <div key={e.id}>
+                return <div styled={{display:"flex"}}key={e.id}>
                     <h1>{e.school_name}</h1>
-                    <img src={e.school_img} />
+                    {/* <img src={e.school_img} /> */}
                 </div>
             })}
         </div>

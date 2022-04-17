@@ -6,7 +6,7 @@ import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import { Link, useNavigate } from "react-router-dom";
 import SvgIcon from '@mui/material/SvgIcon';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
@@ -18,6 +18,7 @@ import Menu from '@mui/material/Menu';
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import SearchAppBar from './Search';
+import { logoutUser } from '../redux/auth/authAction';
 
 function HomeIcon(props) {
     return (
@@ -40,6 +41,8 @@ const darkTheme = createTheme({
 
 export const HomeNav = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     const { isAuthenticated } = useSelector((store) => store.auth);
     return !isAuthenticated ? (
 
@@ -66,7 +69,7 @@ export const HomeNav = () => {
                         </Typography>
                         {/* <SearchAppBar/> */}
                         {/* <Link to={"/createTodo"}><Button sx={{ m: 1, color: "#f2f2ff", textDecoration: "none" }} color="inherit">Create Todo</Button></Link> */}
-                        <Link underline="none" to={"/"}><Button sx={{ m: 1, color: "#f2f2ff" }} color="inherit">Logout</Button></Link>
+                            <Link underline="none" to={"/"}><Button onClick={() => dispatch(logoutUser())} sx={{ m: 1, color: "#f2f2ff" }} color="inherit">Logout</Button></Link>
 
                     </Toolbar>
                 </AppBar>
