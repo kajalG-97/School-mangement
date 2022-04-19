@@ -9,6 +9,7 @@ import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import { getClassList } from '../redux/classes/classAction'
 import { useDispatch } from 'react-redux';
+import {D,P} from "./style"
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -96,7 +97,7 @@ export default function SearchAppBar() {
     return (
 
 
-        <Box sx={{ flexGrow: 1, alignItems: 'center', justifyContent: 'center', mt: 3, display: { xs: "none", md: "flex" } }}>
+        <Box sx={{ width:"350px",height:"50px", alignItems: 'center', justifyContent: 'center', mt: 3, display: { xs: "none", md: "inline-block" } }}>
 
 
             <Search>
@@ -114,13 +115,13 @@ export default function SearchAppBar() {
                 {suggestions.length > 0 && (
                     <div className="autocomplete">
                         {suggestions.map((el, i) => (
-                            <div onClick={() => {
+                            <div  onClick={() => {
                                 dispatch(getClassList(el.classes_ids));
                                 navigate("/searched")
 
                             }} key={i} className="autocompleteItems">
                                
-                                    <p>{el.teacher_name}</p>
+                                    <p style={{color: 'black'}}>{el.teacher_name}</p>
                                
                             </div>
                         ))}

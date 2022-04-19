@@ -13,6 +13,9 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { useNavigate, useParams } from 'react-router-dom';
+import Box from '@mui/material/Box';
+
+
 
 export const SearchTeacherInfo = () => {
 
@@ -37,37 +40,41 @@ export const SearchTeacherInfo = () => {
         },
     }));
 
-    // const { teacher_name } = useParams();
-    // console.log('_id', teacher_name);
 
-    const {classList} = useSelector((store) => store.classes)
-    console.log('classList', classList);
+
+    const { classList } = useSelector((store) => store.classes)
+    
+
     return (
+        <Box>
+            <h1>Classes Information here :</h1>
+            <br />
+            <br />
+            <TableContainer component={Paper}>
+                <Table sx={{ minWidth: 700 }} aria-label="customized table">
+                    <TableHead>
+                        <TableRow>
+                            <StyledTableCell>Grade</StyledTableCell>
 
-        <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 700 }} aria-label="customized table">
-                <TableHead>
-                    <TableRow>
-                        <StyledTableCell>Grade</StyledTableCell>
-                        
-                        <StyledTableCell align="right">Section</StyledTableCell>
-                        <StyledTableCell align="right">Subject</StyledTableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {classList.map((e) => (
+                            <StyledTableCell align="right">Section</StyledTableCell>
+                            <StyledTableCell align="right">Subject</StyledTableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {classList.map((e,i) => (
 
-                        <StyledTableRow key={e.id}>
-                            <StyledTableCell component="th" scope="row">
-                                {e.grade}
-                            </StyledTableCell>
-                            
-                            <StyledTableCell align="right">{e.section}</StyledTableCell>
-                            <StyledTableCell align="right">{e.subject}</StyledTableCell>
-                        </StyledTableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
+                            <StyledTableRow key={i}>
+                                <StyledTableCell component="th" scope="row">
+                                    {e.grade}
+                                </StyledTableCell>
+
+                                <StyledTableCell align="right">{e.section}</StyledTableCell>
+                                <StyledTableCell align="right">{e.subject}</StyledTableCell>
+                            </StyledTableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+        </Box>
     )
 }
