@@ -1,4 +1,4 @@
-# School-mangement
+# School Mangement Project
 
 # https://school-mangement-react-project.vercel.app/
 
