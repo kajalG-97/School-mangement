@@ -46,7 +46,7 @@ export const TeacherData = () => {
 
     // useEffect(() => {
     //     getData();
-    // }, [page]);
+    // }, [page,sort, filter]);
 
     // const getData = () => {
     //     dispatch(getTeacherData(page,sort,filter));

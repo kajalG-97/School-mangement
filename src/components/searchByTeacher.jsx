@@ -19,6 +19,7 @@ import Box from '@mui/material/Box';
 
 export const SearchTeacherInfo = () => {
 
+    const navigate = useNavigate();
 
     const StyledTableCell = styled(TableCell)(({ theme }) => ({
         [`&.${tableCellClasses.head}`]: {
@@ -58,6 +59,8 @@ export const SearchTeacherInfo = () => {
 
                             <StyledTableCell align="right">Section</StyledTableCell>
                             <StyledTableCell align="right">Subject</StyledTableCell>
+
+                            <StyledTableCell align="right">Edit</StyledTableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -70,6 +73,11 @@ export const SearchTeacherInfo = () => {
 
                                 <StyledTableCell align="right">{e.section}</StyledTableCell>
                                 <StyledTableCell align="right">{e.subject}</StyledTableCell>
+                                <StyledTableCell align="right"> <Button onClick={() => {
+                                   console.log(e._id)
+                                     navigate(`/classes/${e._id}`)
+
+                                }} color="secondary">edit class</Button></StyledTableCell>
                             </StyledTableRow>
                         ))}
                     </TableBody>

@@ -6,6 +6,7 @@ import { SignIn } from './components/SignIn'
 import { HomeNav } from './components/HomeNav'
 import { MainHome } from './components/mainHome'
 import {SearchTeacherInfo} from './components/searchByTeacher'
+import { EditClass } from './components/EditClass'
 
 function App() {
 
@@ -17,7 +18,8 @@ function App() {
         <Route path="*" element={<NotFound />} />
         <Route path="/SignIn" element={<SignIn />} />
         <Route path="/mainHome" element={<MainHome />} />
-        <Route path="/searched" element={<SearchTeacherInfo/>}/>
+        <Route path="/searched" element={<SearchTeacherInfo />} />
+        <Route path="/classes/:id" element={<EditClass/>}/>
       </Routes>
     </div>
   )
